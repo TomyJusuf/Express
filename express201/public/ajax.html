@@ -1,8 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body></body>
-</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+  const ourRequest = $.ajax({
+    method: 'POST',
+    url: 'http://localhost:3000/ajax',
+    dataType: 'json',
+    data: {
+      name: 'Rob',
+    },
+  })
+  ourRequest.then((response, statusCode, xmlhtpo) => {
+    console.log(response)
+    console.log(statusCode)
+    console.log(xmlhtpo)
+  })
+</script>

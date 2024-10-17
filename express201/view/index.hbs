@@ -1,0 +1,41 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{{{title}}}</title>
+  </head>
+  <body>
+    <h1>{{text}}</h1>
+    <h2>{{message}}</h2>
+    <h3>Global coutries</h3>
+    <ul>
+      {{#each data}}
+        <li>{{this.city}} - {{this.country}}</li>
+      {{/each}}
+    </ul>
+    <h3>Countries in EU</h3>
+    {{#each data}}
+      {{#if this.isEu}}
+        <li>{{this.city}} - {{this.country}}</li>
+      {{/if}}
+    {{/each}}
+    <br />
+    <br />
+    <h3>Countries not in EU</h3>
+    {{! each,if,unless }}
+    {{#each data}}
+      {{#unless this.isEu}}
+        <li>{{this.city}} - {{this.country}}</li>
+      {{/unless}}
+    {{/each}}
+
+    <h3>Handlebars</h3>
+    <a href='{{link}}' target='_blank'>My link to Handlebars</a>
+    <br />
+    <br />
+    <h3>How to use comments in Handlebars</h3>
+    {{! This comment will not show up in the output}}
+    <!-- This comment will show up as HTML-comment -->
+    {{!-- This comment may contain mustaches like }} --}}
+  </body>
+</html>

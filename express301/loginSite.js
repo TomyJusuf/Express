@@ -65,6 +65,21 @@ app.get('/welcome', (req, res) => {
   })
 })
 
+// app.param() - take 2 args:
+// 1. param to look for in the route
+// 2. callback function
+
+app.param('id', (req, res, next, id) => {
+  console.log('Pram called: ', id)
+  // if id has something to do with stories...
+  // it will have a property for each wildcard in the route
+  next()
+})
+
+app.get('/story/:id', (req, res) => {
+  res.send('Story ' + req.params.id)
+})
+
 app.get('/logout', (req, res) => {
   res.clearCookie('username')
   res.redirect('/login')

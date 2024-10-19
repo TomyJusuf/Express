@@ -80,6 +80,16 @@ app.get('/story/:id', (req, res) => {
   res.send('Story ' + req.params.id)
 })
 
+app.get('/statement', (req, res) => {
+  //this will render the statemten in the browser
+  // res.sendFile(path.join(__dirname, 'userStatements/bankState.png'))
+
+  res.download(
+    path.join(__dirname, 'userStatements/bankState.png'),
+    'tomasStatement.png'
+  )
+})
+
 app.get('/logout', (req, res) => {
   res.clearCookie('username')
   res.redirect('/login')

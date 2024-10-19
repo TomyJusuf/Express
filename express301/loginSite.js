@@ -16,11 +16,24 @@ app.use(cookieParser())
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
+app.use((req, res, next) => {
+  if (req.query.msg === 'fail') {
+    res.locals.msg =
+      'Sorry. This username and password combination does not exist.'
+  } else {
+    res.locals.msg = ''
+  }
+  next()
+})
+
 app.get('/', (req, res, next) => {
   res.send('Sanity Check')
 })
 
 app.get('/login', (req, res, next) => {
+  // the req object has a query property in Express
+  // req.query is an object, with a property og every key in the query string
+  console.log(req.query)
   res.render('login')
 })
 

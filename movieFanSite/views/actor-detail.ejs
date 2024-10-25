@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Movie App</title>
+    <% include head %>
+  </head>
+  <body>
+    <% include navbar %>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+          <h1 class="single-movie-title"><%= actorDetail.name %></h1>
+
+          <h5 class="single-movie-title"><%= actorDetail.birthday %></h5>
+
+          <img src="<%= imageBaseUrl + actorDetail.profile_path %> " />
+
+          <h5 class="single-movie-title">
+            <%= actorDetail.known_for_department %>
+          </h5>
+
+          <p class="overview-header">
+            Biography:
+            <span class="single-movie-overview">
+              <%= actorDetail.biography %></span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -59,9 +59,9 @@ router.post('/search', function (req, res, next) {
 
 router.get('/person/:id', function (req, res, next) {
   const id = req.params.id
-  console.log(id)
+
   const movieUrl = `${apiBaseUrl}/person/${id}?api_key=${apiKey}`
-  console.log(movieUrl)
+
   request.get(movieUrl, (error, response, body) => {
     if (!error && response.statusCode == 200) {
       const parseData = JSON.parse(body)

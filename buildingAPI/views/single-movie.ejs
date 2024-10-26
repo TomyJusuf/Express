@@ -1,0 +1,65 @@
+<% include head %>
+</head>
+<body>
+<% include navbar %>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<h1 class="single-movie-title"><%= movieDetail.title %></h1>
+
+				<h3 class="single-movie-title"><%= movieDetail.tagline %></h3>
+
+				<a href="<%= movieDetail.homepage %>">
+					<img src="<%= imageBaseUrl + movieDetail.poster_path %> " />
+				</a>
+				
+				<p class="overview-header">Movie Synopsis: <span class="single-movie-overview"><%= movieDetail.overview %></span></p>
+			</div>
+		</div>
+	</div>
+
+<!-- Button trigger modal -->
+<div class="col-sm-12 text-center">
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		More Details
+	</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Movie Information</h4>
+      </div>
+      <div class="modal-body">
+				<a href="https://www.imdb.com/title/<%= movieDetail.imdb_id %>" target="_blank">IMDB link</a>
+		
+				<ul>
+					<li>Budget: <%= movieDetail.budget %></li>
+					<li>Revenue: <%= movieDetail.revenue %></li>
+					<li>Release Date: <%= movieDetail.release_date %></li>
+					<li>Production Company: <br>
+						<% movieDetail.production_companies.forEach(function (company) { %>
+							- <%= company.name %><br>
+						<% }); %>
+						</li>
+
+					<li>Genre:<br>
+					<% movieDetail.genres.forEach(function (genre) { %>
+						- <%= genre.name %> <br>
+					<% }); %>	
+					</li>
+				</ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
